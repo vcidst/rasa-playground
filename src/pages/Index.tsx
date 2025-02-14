@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { ChatBot } from "@/components/ChatBot";
@@ -10,6 +9,7 @@ import { FileType } from "@/types";
 import { Play } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { encodeContent, decodeContent } from '@/utils/compression';
 
 const Index = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -17,16 +17,16 @@ const Index = () => {
   const [selectedFile, setSelectedFile] = useState<FileType>("flows");
   const [isTraining, setIsTraining] = useState(false);
   const [files, setFiles] = useState({
-    flows: searchParams.get("flows") || defaultValues.flows,
-    domain: searchParams.get("domain") || defaultValues.domain,
-    config: searchParams.get("config") || defaultValues.config,
-    endpoints: searchParams.get("endpoints") || defaultValues.endpoints,
+    flows: decodeContent(searchParams.get("flows")) || defaultValues.flows,
+    domain: decodeContent(searchParams.get("domain")) || defaultValues.domain,
+    config: decodeContent(searchParams.get("config")) || defaultValues.config,
+    endpoints: decodeContent(searchParams.get("endpoints")) || defaultValues.endpoints,
   });
 
   useEffect(() => {
     const newParams = new URLSearchParams();
     Object.entries(files).forEach(([key, value]) => {
-      newParams.set(key, value);
+      newParams.set(key, encodeContent(value));
     });
     setSearchParams(newParams);
   }, [files, setSearchParams]);
