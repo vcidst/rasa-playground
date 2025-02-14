@@ -84,4 +84,5 @@ export const defaultValues = {
   domain: defaultDomain,
   endpoints: defaultEndpoints,
   config: defaultConfig,
+  apiUrl: "http://localhost:5005", // Default Rasa server URL
 };

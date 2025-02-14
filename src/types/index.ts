@@ -6,3 +6,7 @@ export interface RasaFile {
   name: string;
   content: string;
 }
+
+export interface ApiConfig {
+  baseUrl: string;
+}
