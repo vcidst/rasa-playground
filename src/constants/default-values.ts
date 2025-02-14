@@ -4,4 +4,5 @@ export const defaultValues = {
   domain: "TODO",
   endpoints: "TODO",
   config: "TODO",
+  apiUrl: "http://localhost:5005", // Default Rasa server URL
 };
