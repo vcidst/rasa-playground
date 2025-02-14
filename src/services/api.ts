@@ -1,4 +1,3 @@
-
 let baseUrl = window.location.search
   ? new URLSearchParams(window.location.search).get("apiUrl") || "http://localhost:5005"
   : "http://localhost:5005";
@@ -10,11 +9,44 @@ export const setBaseUrl = (url: string) => {
 };
 
 export const trainAssistant = async (flows: string, domain: string, config: string, endpoints: string) => {
-  // TODO: Implement actual API call
-  console.log("Training assistant with:", { flows, domain, config, endpoints });
-  console.log("Using API URL:", getBaseUrl());
-  await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate API call
-  return { success: true };
+  try {
+    const response = await fetch(`${getBaseUrl()}/training`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: `train_${Date.now()}`, // Generate unique training ID
+        assistant_id: 'playground',
+        client_id: 'playground',
+        bot_config: {
+          domain: btoa(domain),         // Base64 encode
+          flows: btoa(flows),           // Base64 encode
+          config: btoa(config),         // Base64 encode
+          endpoints: btoa(endpoints),    // Base64 encode
+          // Required fields with empty content
+          credentials: btoa(''),
+          stories: btoa(''),
+          rules: btoa(''),
+          nlu: btoa('')
+        }
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`Training failed: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return {
+      success: true,
+      trainingId: data.training_id,
+      modelName: data.model_name
+    };
+  } catch (error) {
+    console.error('Training error:', error);
+    throw new Error(error instanceof Error ? error.message : 'Training failed');
+  }
 };
 
 export const talkToBot = async (userMessage: string) => {

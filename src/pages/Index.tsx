@@ -81,7 +81,7 @@ const Index = () => {
               <div className="space-y-2">
                 <h4 className="font-medium leading-none">API Settings</h4>
                 <p className="text-sm text-muted-foreground">
-                  Configure the model service URL.
+                  Configure the Rasa model service URL.
                 </p>
                 <Input
                   value={apiUrl}
