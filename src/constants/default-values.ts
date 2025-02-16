@@ -77,7 +77,9 @@ pipeline:
 
 policies:
   - name: FlowPolicy
-#  - name: EnterpriseSearchPolicy`;
+#  - name: EnterpriseSearchPolicy
+
+assistant_id: hello-world`;
 
 export const defaultValues = {
   flows: defaultFlows,
