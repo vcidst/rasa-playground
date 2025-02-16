@@ -1,4 +1,3 @@
-
 import { FileType } from "@/types";
 import Editor from "@monaco-editor/react";
 import { useEffect, useRef } from "react";

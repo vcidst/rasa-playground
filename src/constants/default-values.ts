@@ -16,8 +16,7 @@ const defaultFlows = `flows:
     description: Flow for handling knowledge-based questions
     name: pattern search
     steps:
-      - action: utter_free_chitchat_response
-`;
+      - action: utter_free_chitchat_response`;
 
 const defaultDomain = `version: "3.1"
 
