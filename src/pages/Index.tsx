@@ -69,7 +69,7 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <header className="border-b px-4 py-3 flex justify-between items-center bg-background">
-        <h1 className="text-lg font-semibold">Rasa Assistant Editor</h1>
+        <h1 className="text-lg font-semibold">Rasa Assistant Playground</h1>
         <div className="flex items-center gap-2">
           <Popover>
             <PopoverTrigger asChild>
