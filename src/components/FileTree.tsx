@@ -1,4 +1,3 @@
-
 import { FileType } from "@/types";
 import { File } from "lucide-react";
 
@@ -33,6 +32,9 @@ export const FileTree = ({ onFileSelect, selectedFile }: FileTreeProps) => {
             <span className="text-sm">{name}</span>
           </button>
         ))}
+      </div>
+      <div className="mt-4 text-sm text-muted-foreground">
+        You can share this assistant with the URL.
       </div>
     </div>
   );

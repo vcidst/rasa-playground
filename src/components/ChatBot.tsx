@@ -44,7 +44,7 @@ export const ChatBot = () => {
       {isOpen && (
         <div className="w-96 h-[500px] bg-white rounded-lg shadow-lg flex flex-col overflow-hidden transition-all duration-300">
           <div className="flex items-center justify-between p-4 border-b">
-            <h5 className="font-semibold">Rasa Chatbot</h5>
+            <h5 className="font-semibold">Talk to Assistant</h5>
             <Button size="icon" variant="ghost" onClick={() => setIsOpen(false)}>
               <X className="w-4 h-4" />
             </Button>

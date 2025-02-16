@@ -1,6 +1,6 @@
-let baseUrl = window.location.search
-  ? new URLSearchParams(window.location.search).get("apiUrl") || "http://localhost:5005"
-  : "http://localhost:5005";
+import { defaultValues } from "@/constants/default-values";
+
+let baseUrl = defaultValues.apiUrl;
 
 const getBaseUrl = () => baseUrl;
 
