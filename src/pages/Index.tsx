@@ -12,6 +12,7 @@ import { useSearchParams } from "react-router-dom";
 import { encodeContent, decodeContent } from '@/utils/compression';
 import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { FlowVisualizer } from "@/components/FlowVisualizer";
 
 const Index = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -107,11 +108,22 @@ const Index = () => {
       <main className="flex-1 grid grid-cols-[250px_1fr] overflow-hidden">
         <FileTree onFileSelect={setSelectedFile} selectedFile={selectedFile} />
         <div className="h-full">
-          <CodeEditor
-            value={files[selectedFile]}
-            onChange={handleFileChange}
-            fileType={selectedFile}
-          />
+          {selectedFile === "flows" ? (
+            <div className="h-full grid grid-rows-[1fr_1fr]">
+              <CodeEditor
+                value={files[selectedFile]}
+                onChange={handleFileChange}
+                fileType={selectedFile}
+              />
+              <FlowVisualizer flowContent={files[selectedFile]} />
+            </div>
+          ) : (
+            <CodeEditor
+              value={files[selectedFile]}
+              onChange={handleFileChange}
+              fileType={selectedFile}
+            />
+          )}
         </div>
       </main>
 

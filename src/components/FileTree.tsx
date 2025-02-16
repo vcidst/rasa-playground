@@ -8,15 +8,15 @@ interface FileTreeProps {
 
 export const FileTree = ({ onFileSelect, selectedFile }: FileTreeProps) => {
   const files: { type: FileType; name: string }[] = [
-    { type: "flows", name: "flows.yml" },
-    { type: "domain", name: "domain.yml" },
-    { type: "config", name: "config.yml" },
-    { type: "endpoints", name: "endpoints.yml" },
+    { type: "flows", name: "flows" },
+    { type: "domain", name: "domain" },
+    { type: "config", name: "config" },
+    { type: "endpoints", name: "endpoints" },
   ];
 
   return (
     <div className="p-4 border-r border-border h-full bg-background">
-      <h2 className="text-sm font-semibold mb-4">Project Files</h2>
+      <h2 className="text-sm font-semibold mb-4">Project Files (YAML)</h2>
       <div className="space-y-2">
         {files.map(({ type, name }) => (
           <button
